@@ -1,0 +1,90 @@
+npm init pour initialiser le projet npm (creaion du fichier package.json)
+npm init -y :  pour que le fichier pakage.json soit creer avec les valeurs par defaut
+
+npm install --save-dev  typescript  pour  creer un environnement de développement 
+
+npm install  typescript pour creer un environnement de production
+un environnement de production => pour le deploiement
+un environnement de developpement => pour l'execution , le test , unifier
+
+dans le package.json, la clé main contient le fichier qui sera lancé par defaut
+
+
+version "1.0.0" => { lorsqu'il ya une variation
+			1: major lorsque l'api change( bcq de changement )
+			0: minor lorsqu'une fonctionnalité a été changé ()
+			0: patch lorsqu'il ya correction de bugs
+
+Recherche sur le "sem-server" ( nom à revoir)
+
+npm tsc nom_fichier_ts -w 
+
+installation d'un server pour lancer automatiquement le fichier html qui "contient le script js"  comme un live server
+
+npm install lite-server --save-dev  ( pour installer le server lite-server)
+
+
+le fichier node_module est équivalent au dossier vendor. Il contient les dépandance installer dans le projet.
+
+package-lock.json permet de verrouiller les versions ( dans un autre projet il permet de télécharger les dépandance compatible avec le projet)
+
+
+"lite-server" : "^2.0.0" ( "^"lors des téléchargements, le major est fixé mais le minor et patch peuvent avoir des versions supérieurs) ( il est present dans le fichier package.json)
+
+engine pour la version de node
+
+on va dans le fichier package.json et on définit une commande dans la clé script( "serve" : "lite-server")
+sdi on utilise un mot clé de npm , alors on a pas besoin de lancer la commande npm run
+on lance la commande npm run pour que la novelle commande soit reconnue
+ensuite on lance notre commande pour lancer le live server ( npm run serve)
+
+
+						tsconfig.json
+						
+						
+creation des fichiers src et dist 
+
+
+on tape la commande tsc --init pour générer le fichier tsconfig.json
+
+option target permet de définir sur quels versions de typescript on va transpiler ("es2016" let => var, )  version + 9 = annee de sortie de la version
+
+option module pour la programmation modulaire ( commonJS valeur dispo dans tous les navigateurs)
+
+option include permet d'inclure les fichiers ts à transpiler (hors de l'option compilerOption) il prends comme valeur un tableau, chaque élément du tableau est un fichier ts à transpiler [dossier/*.ts pour transpiler tous les fichiers ts dans le dossier]
+
+option files , il est identique à include mais il ne prends pas les dossiers 
+
+option routeDir (dans le compilerOption) c'est ou se trouve les fichiers à transpiler
+option outDir oû seront stockés les fichiers transpiler ( i.e les fichiers js);
+
+option removeComment c'est un booleen ( true pour supprimer les commentaires)
+
+option noEmiteOnError booleen ( vrai pou empêcher que le fichier soit transpiler s'il y a une erreur) 
+
+option exclude permet d'exclure un fichier cible => syntaxe ("exclude" : ["./src/app.ts","**/*dev.ts"] -> [ **/*dev.ts exclure(pas de transpilation) tous les fichiers dev.ts de tous répertoire, *.dev.ts exclure tous fichiers dev.ts de la racine, "nodes_modules" pour exclure le repertoire node_module]
+
+
+						Les methodes
+						
+la methode reduce pour faire une operations sur des éléments d'un tableau => syntaxe (let value = tab.reduce((accumulateur = valeur initiale, currentvalue, index = valeur par defaut 0 ) => { return accumulateur + currentvalue);  reduce dafa sadikk => dougale tableau guéné béneu valeur
+
+la methode join permet de concatener un tableau de chaine de caractere. Il prend en parametre un séparateur et return une chaine de caractere qui est séparé par le séparateur. Par defaut si on ne met pa sde séparateur, alors il retour une chaine séparé par des virgules. Syntaxe => : chaine.join(separateur);
+
+la methode every pas claire l'explication (pour moi);	
+
+Il prend en parametre un callback et une condition; Si tous les éléments du tableau vérifie la condtion, alors il retourne true, sinon , il retourne false. 
+syntaxe => tab.every((nombre => { return nombre% 2 === 0});  son inverse est la fonction some
+
+
+La methode unshift permet d'ajouter des éléments au debut d'un tableau. Il retourne la longueur du tableau. Il ne cree pas un nouveau tableau , il modifie seulement l'ancien tableau.
+syntaxe => tab.unshift(nouvelles valeurs séparé par des virgules); Il a pour inverse POP .
+
+
+La methode reduceRight() a la meme fonctionnalité que reduce mais elle commence à parcourrir à partir de la fin du tableau. 
+
+La methode concat() : Elle permet de fusionner plusieurs tableau en un seul tableau.  => syntaxe => let val = tab1.concat(tab2); La fusion n'enleve pas les doublons
+Le typescript ne peut concatener que les tableaux de meme type. IL interdit que les tableaux aient des valeurs de différents types	
+Pour concatener Plusieurs tableaux , on utilise la syntaxe tab1.concat(tab2,tab3,tab4,);	 
+ 
+
